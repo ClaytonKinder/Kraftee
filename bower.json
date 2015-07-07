@@ -1,0 +1,22 @@
+{
+  "name": "Kraftee",
+  "version": "0.0.0",
+  "authors": [
+    "Clayton Kinder <ClaytonAlanKinder@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.2",
+    "fontawesome": "~4.3.0",
+    "jquery": "~2.1.4",
+    "normalize.css": "~3.0.3",
+    "underscore": "~1.8.3"
+  }
+}
