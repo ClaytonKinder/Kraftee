@@ -13,13 +13,12 @@
       };
 
       var mapData = function(collection) {
-        console.log(collection);
        return _.map(collection, function(obj){
          return {
            img: obj.MainImage.url_fullxfull,
-           title: obj.title,
+           title: cleanCharacters(obj.title),
            id: obj.listing_id,
-           description: obj.description,
+           description: cleanCharacters(obj.description),
            url: obj.url,
            materials: obj.materials,
            price: obj.price
@@ -40,11 +39,18 @@
           var narrowedDownArr = _.where(products.data.results, {listing_id: Number(id)});
           return mapData(narrowedDownArr)[0];
         });
-      }
+      };
+
+      var cleanCharacters = function(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+      };
 
       return {
         getProducts: getProducts,
-        getProduct: getProduct
+        getProduct: getProduct,
+        cleanCharacters: cleanCharacters
       };
     })
     .factory('CartService', function ($http) {
@@ -72,7 +78,7 @@
         $http.get(url).success(function(cart) {
           return cart.length;
         })
-      }
+      };
 
       return {
         addToCart: addToCart,

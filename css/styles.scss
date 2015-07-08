@@ -137,6 +137,7 @@ SORTING
   align-items: center;
 
   > div {
+    color: $c1;
     cursor: pointer;
     padding: 10px 0;
     width: 50%;
@@ -183,6 +184,9 @@ CATALOG
         a {
           height: 100%;
           width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           img {
             height: 100%;
@@ -231,12 +235,13 @@ CATALOG
       width: 100%;
       border: 5px solid $c1;
       display: flex;
+      justify-content: space-between;
       align-items: center;
 
       .productEtsy,
       .productAdd {
         cursor: pointer;
-        width: 50%;
+        width: 49.5%;
         background-color: $c2;
         color: $c1;
         font-size: 0.8rem;

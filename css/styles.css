@@ -88,6 +88,7 @@ SORTING
   display: flex;
   align-items: center; }
   #sorting > div {
+    color: #CC5D4C;
     cursor: pointer;
     padding: 10px 0;
     width: 50%;
@@ -123,7 +124,10 @@ CATALOG
         height: 65%; }
         #catalog .product .productDetails .productImage a {
           height: 100%;
-          width: 100%; }
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
           #catalog .product .productDetails .productImage a img {
             height: 100%;
             width: 100%; }
@@ -156,11 +160,12 @@ CATALOG
       width: 100%;
       border: 5px solid #CC5D4C;
       display: flex;
+      justify-content: space-between;
       align-items: center; }
       #catalog .product .productActions .productEtsy,
       #catalog .product .productActions .productAdd {
         cursor: pointer;
-        width: 50%;
+        width: 49.5%;
         background-color: #FFFEC6;
         color: #CC5D4C;
         font-size: 0.8rem;
