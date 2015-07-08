@@ -1,3 +1,6 @@
 <ng-include src="'products/views/header.html'"></ng-include>
-<ng-include src="'products/views/productSort.html'"></ng-include>
+<div id="sorting">
+  <input type="text" name="search" ng-model="search.title" placeholder="Title"></input>
+  <input type="text" name="search" ng-model="search.price" placeholder="Price"></input>
+</div>
 <ng-include src="'products/views/catalog.html'"></ng-include>
