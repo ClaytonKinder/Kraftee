@@ -548,6 +548,9 @@ QUERIES
     font-size: 1rem; }
 
   #catalog .product {
-    width: 100%; } }
+    width: 100%; }
+
+  .cartWrapper .cart .cartProduct .cartProductTitle {
+    font-size: 0.6rem; } }
 
 /*# sourceMappingURL=styles.css.map */

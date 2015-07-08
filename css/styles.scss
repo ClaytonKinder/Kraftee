@@ -793,4 +793,14 @@ QUERIES
       width: 100%;
     }
   }
+
+  .cartWrapper {
+    .cart {
+      .cartProduct {
+        .cartProductTitle {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
 }
