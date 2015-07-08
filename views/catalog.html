@@ -1,0 +1,25 @@
+<div ng-controller="CartController" id="catalog">
+  <div class="product" ng-repeat="product in products" data-id="{{product.id}}">
+    <div class="productDetails">
+      <div class="productImage">
+        <a href="#/detail/{{product.id}}"><img ng-src="{{product.img}}"></a>
+      </div>
+      <div class="productInfo">
+        <div class="productTitle">
+          {{product.title}}
+        </div>
+        <div class="productPrice">
+          {{product.price | currency}}
+        </div>
+      </div>
+    </div>
+    <div class="productActions">
+      <a target="_blank" href="{{product.url}}" class="productEtsy">
+        Etsy
+      </a>
+      <div class="productAdd" ng-click="addToCart(product)" data-id="{{product.id}}">
+        <i class="fa fa-cart-plus"></i>
+      </div>
+    </div>
+  </div>
+</div>
