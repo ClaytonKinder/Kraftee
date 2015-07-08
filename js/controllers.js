@@ -18,7 +18,7 @@
       }
     })
     .controller('CartController', function ($rootScope, $scope, CartService, $location) {
-      CartService.getCart().success(function (cart) {
+      CartService.getCart().then(function (cart) {
         $scope.cart = cart;
       });
 
@@ -30,19 +30,24 @@
         return total;
       };
 
+      var watchCallback = function () {
+        CartService.getCart().then(function (cart) {
+         $scope.cart = cart;
+        });
+      };
+
       $scope.addToCart = function (product) {
-        console.log('Item added.');
+        console.log('Item added - controller');
         CartService.addToCart(product);
-        $rootScope.$broadcast('cart-scanned');
       };
 
       $scope.deleteFromCart = function (productId) {
         console.log('Item deleted.');
         CartService.deleteFromCart(productId);
-        $rootScope.$broadcast('cart-scanned');
       };
 
-      // $scope.$on('cart-scanned', CartService.getCartLength())
+      $scope.$on('item:created', watchCallback);
+      $scope.$on('item:deleted', watchCallback);
     });
 
 })();
