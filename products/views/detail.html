@@ -1,17 +1,40 @@
-<div class="container">
-  <div class="photos">
-    <article class="photo" data-id="{{photo.id}}">
-      <header>
-        <img src="http://www.fillmurray.com/50/50" alt="" />
-        <div class="">
-          <a href="#/{{photo.id}}">{{photo.title}}</a>
-        </div>
-        <a href="#">4 hours ago</a>
-      </header>
-      <div class="pContain">
-          <img ng-src="{{photo.image}}" alt="" />
+<ng-include src="'views/header.html'"></ng-include>
 
+<div class="detail">
+  <div class="detailImage">
+    <img ng-src="{{product.img}}">
+    <div ng-show="product.materials.length" class="detailMaterials">
+      <div class="detailMaterialTitle">
+        <h3>Materials</h3>
       </div>
-    </article>
+      <div class="detailMaterialsContent">
+        <div class="detailMaterial" ng-repeat="material in product.materials">
+          {{material}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="detailInfo">
+    <div class="detailTitle">
+      <h2>{{product.title}}</h2>
+    </div>
+    <div class="detailDescription">
+      <p>
+        {{ product.description }}
+      </p>
+    </div>
+    <div class="detailEtsy">
+      <a target="_blank" href="{{product.url}}">View this item's Etsy page</a>
+    </div>
+    <div class="detailPurchase">
+      <div class="detailPrice">
+        {{product.price | currency}}
+      </div>
+      <div class="detailAdd">
+        <button ng-click="addToCart(product)" ng-controller="CartController" type="button">
+          <i class="fa fa-cart-plus"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

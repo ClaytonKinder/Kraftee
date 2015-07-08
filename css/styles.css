@@ -197,6 +197,7 @@ CATALOG
           width: 100%;
           color: #FFFEC6; }
         #catalog .product .productDetails .productInfo .productTitle {
+          padding: 0 2.5px;
           height: 65%;
           font-size: 0.9rem;
           text-overflow: ellipsis;

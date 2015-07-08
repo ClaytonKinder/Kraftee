@@ -1,18 +1,18 @@
 (function () {
   'use strict';
   angular
-    .module('photos', [
+    .module('products', [
       'ngRoute'
     ])
     .config(function ($routeProvider) {
       $routeProvider
-        .when('/photos', {
-          templateUrl: 'photos/views/list.html',
-          controller: 'PhotoController'
+        .when('/', {
+          templateUrl: 'products/views/main.html',
+          controller: 'MainController'
         })
-        .when('/photos/:photoId', {
-          templateUrl: 'photos/views/detail.html',
-          controller: 'PhotoController'
-        });
+        .when('/detail/:productId', {
+          templateUrl: 'products/views/detail.html',
+          controller: 'MainController'
+        })
     });
 })();
