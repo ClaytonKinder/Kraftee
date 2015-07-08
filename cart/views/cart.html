@@ -1,0 +1,35 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<div ng-controller="CartController" class="cartWrapper">
+  <div class="cart">
+    <div class="cartProduct" ng-repeat="item in cart">
+      <div class="cartProductImage">
+        <img ng-src="{{item.img}}">
+      </div>
+      <div class="cartProductTitle">
+        {{item.title}}
+      </div>
+      <div class="cartProductPrice">
+        {{item.price | currency}}
+      </div>
+      <div class="cartProductDelete">
+        <i ng-click="deleteFromCart(item._id)" class="fa fa-times"></i>
+      </div>
+    </div>
+  </div>
+  <div class="checkout">
+    <div class="checkoutPrice">
+      <div class="checkoutTotal">
+        Total
+      </div>
+      <div class="checkoutAmount">
+        {{ getTotalPrice() | currency }}
+      </div>
+    </div>
+    <div class="checkoutButton">
+      <button type="button">
+        <i class="fa fa-usd"></i>
+      </button>
+    </div>
+  </div>
+</div>
