@@ -1,15 +1,14 @@
 (function () {
   'use strict';
   angular
-    .module('likes', [
+    .module('cart', [
       'ngRoute'
     ])
     .config(function ($routeProvider) {
       $routeProvider
-        .when('/likes', {
-          templateUrl: 'likes/views/list.html',
-          controller: 'LikesController'
-        });
+        .when('/cart', {
+          templateUrl: 'cart/views/cart.html',
+          controller: 'CartController'
+        })
     });
-
 })();

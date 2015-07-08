@@ -1,24 +1,45 @@
 (function () {
   'use strict';
   angular
-    .module('likes')
-    .factory('LikesService', function ($http, $q, $cacheFactory) {
-      var url = 'http://tiy-fee-rest.herokuapp.com/collections/instaflickr';
-      var addLike = function (photo) {
-        $http.post(url, photo).success(function (resp) {
+    .module('cart')
+    .factory('CartService', function ($http, $q, $rootScope) {
+      var url = 'http://tiy-fee-rest.herokuapp.com/collections/kraftee-kart';
 
-        }).error(function (err) {
-          console.log(err);
+      var addToCart = function(product){
+        $http.post(url, product).success(function(response){
+         $rootScope.$broadcast('item:created');
+        }).error(function(error){
+         console.log("error " + error);
+        })
+      };
+
+      var deleteFromCart = function(productId) {
+        var deleteUrl = url + '/' + productId;
+        $http.delete(deleteUrl).success(function(response){
+         $rootScope.$broadcast('item:deleted');
+        }).error(function(error){
+         console.log("error " + error);
+        })
+      };
+
+      var getCart = function(){
+        return $http.get(url).then(function(cart){
+         var cartArray = cart.data;
+         return cartArray;
         });
       };
-      var getLikes = function () {
-        return $http.get(url);
+
+      var getCartLength = function() {
+        $http.get(url).success(function(cart) {
+          return cart.length;
+        })
       };
 
       return {
-        addLike: addLike,
-        getLikes: getLikes
+        addToCart: addToCart,
+        deleteFromCart: deleteFromCart,
+        getCart: getCart,
+        getCartLength: getCartLength
       };
     });
-
 })();

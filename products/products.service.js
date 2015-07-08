@@ -1,63 +1,76 @@
 (function () {
   'use strict';
   angular
-    .module('photos')
-    .factory('PhotoService', function ($http, _, moment, $q, $cacheFactory) {
-       var cacheEngine = $cacheFactory('AwesomePhotos');
-        var urlOpts = {
-          baseUrl: 'https://api.flickr.com/services/rest/?',
-          apiKey: '79fb5d98470867ae3cd196873299538d',
-          method: 'flickr.interestingness.getList',
-          format: 'json',
-          buildUrl: function () {
-            return this.baseUrl + 'method=' + this.method + '&api_key=' + this.apiKey + '&format=' + this.format + '&extras=date_upload&nojsoncallback=1';
-          }
-        };
-        var buildImgUrl = function (obj) {
-          return 'https://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '_z.jpg';
-        };
-        var mapDataToUrls = function (collection) {
-          return _.map(collection, function (obj) {
-            return {image: buildImgUrl(obj), title: obj.title, id: obj.id, dt: moment.unix(obj.dateupload).fromNow() };
+    .module('products')
+    .factory('ProductService', function ($http, _, $q, $cacheFactory) {
+      var cacheEngine = $cacheFactory('MyProducts');
+      var urlOpts = {
+        baseUrl: 'https://openapi.etsy.com/v2/listings/',
+        apiKey: 'if03omqbsv80nvtqotastjk2',
+        buildUrl: function () {
+          var url = this.baseUrl + 'active.js?includes=MainImage&api_key=' + this.apiKey + '&callback=JSON_CALLBACK';
+          return url;
+        }
+      };
+
+      var mapData = function(collection) {
+       return _.map(collection, function(obj){
+         return {
+           img: obj.MainImage.url_fullxfull,
+           title: cleanCharacters(obj.title),
+           id: obj.listing_id,
+           description: cleanCharacters(obj.description),
+           url: obj.url,
+           materials: obj.materials,
+           price: obj.price
+         }
+       });
+      }
+
+      // build image url in object with title, id, date
+      var getProducts = function () {
+        var deferred = $q.defer();
+        var cache = cacheEngine.get('products');
+        if(cache) {
+          console.log('we are in our cache');
+          deferred.resolve(cache);
+        } else {
+          $http.jsonp(urlOpts.buildUrl()).then(function (products) {
+            var productsArray = products.data.results;
+            console.log('we are in our http method');
+            cacheEngine.put('products', mapData(productsArray));
+            deferred.resolve(mapData(productsArray));
           });
-        };
-// build image url in object with title, id, date
-        var getPhotos = function () {
-          var deferred = $q.defer();
-          var cache = cacheEngine.get('photos');
-          if(cache) {
-            console.log('we are in our cache');
-            deferred.resolve(cache);
-          } else {
-            $http.get(urlOpts.buildUrl()).then(function (photos) {
-              var flickrArray = photos.data.photos.photo;
-              console.log('we are in our http method');
-              cacheEngine.put('photos', mapDataToUrls(flickrArray));
-               deferred.resolve(mapDataToUrls(flickrArray));
-            });
-          }
-          return deferred.promise;
-        };
+        }
+        return deferred.promise;
+      };
 
-        var getPhoto = function (id) {
-          var deferred = $q.defer();
-          var cache = cacheEngine.get('photos');
-          if(cache) {
-            console.log('single photo cache');
-            deferred.resolve(_.where(cache, {id: id})[0]);
-          } else {
-            $http.get(urlOpts.buildUrl()).then(function (photos) {
-              var narrowedDownArr = _.where(photos.data.photos.photo, {id: id});
-                deferred.resolve(mapDataToUrls(narrowedDownArr)[0]);
-            });
-          }
-          return deferred.promise;
-        };
+      var getProduct = function(id) {
+        var deferred = $q.defer();
+        var cache = cacheEngine.get('product');
+        if(cache) {
+          console.log('single photo cache');
+          deferred.resolve(_.where(cache, {id: id})[0]);
+        } else {
+          $http.jsonp(urlOpts.buildUrl()).then(function (products) {
+             var narrowedDownArr = _.where(products.data.results, {listing_id: Number(id)});
+             deferred.resolve(mapData(narrowedDownArr)[0]);
+          });
+        }
+        return deferred.promise;
+      };
 
-        return {
-          getPhotos: getPhotos,
-          getPhoto: getPhoto
-        };
+      var cleanCharacters = function(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+      };
+
+      return {
+        getProducts: getProducts,
+        getProduct: getProduct,
+        cleanCharacters: cleanCharacters
+      };
+
     });
-
 })();

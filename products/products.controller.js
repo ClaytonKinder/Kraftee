@@ -1,16 +1,21 @@
 (function () {
   'use strict';
   angular
-    .module('photos')
-    .controller('PhotoController', function ($scope, PhotoService, $routeParams) {
-      PhotoService.getPhotos().then(function (photos) {
+    .module('products')
+    .controller('MainController', function ($scope, ProductService, $routeParams, $location) {
 
-        $scope.photos = photos;
-      });
-      if($routeParams.photoId) {
-      PhotoService.getPhoto($routeParams.photoId).then(function (photo) {
-        $scope.photo = photo;
-      });
+      if ($location.url() === '/') {
+        console.log('Got all products.');
+        ProductService.getProducts().then(function(products) {
+          $scope.products = products;
+        });
+      }
+
+      if($routeParams.productId) {
+        console.log('Got single product.');
+        ProductService.getProduct($routeParams.productId).then(function(product) {
+          $scope.product = product;
+        });
       }
 
     });
