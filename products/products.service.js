@@ -36,7 +36,6 @@
         } else {
           $http.jsonp(urlOpts.buildUrl()).then(function (products) {
             var productsArray = products.data.results;
-            console.log(productsArray);
             cacheEngine.put('products', mapData(productsArray));
             deferred.resolve(mapData(productsArray));
           });
