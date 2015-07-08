@@ -10,10 +10,6 @@
       ProductService.getProduct($routeParams.productId).then(function(product) {
         $scope.product = product;
       });
-
-      $scope.cleanCharacters = function(html) {
-        ProductService.cleanCharacters(html);
-      };
     })
     .controller('CartController', function ($scope, CartService, $location) {
       CartService.getCart().success(function (cart) {
@@ -25,7 +21,6 @@
         _.each($scope.cart, function(el, idx) {
           total += Number($scope.cart[idx].price);
         });
-        console.log(total);
         return total;
       };
 

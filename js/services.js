@@ -62,6 +62,7 @@
           console.log(err);
         });
       };
+
       var deleteFromCart = function(productId) {
         var deleteUrl = url + '/' + productId;
         $http.delete(deleteUrl).success(function (resp) {
@@ -70,6 +71,7 @@
             console.log(err);
           });
       };
+      
       var getCart = function () {
         return $http.get(url);
       };

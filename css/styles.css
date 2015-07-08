@@ -87,10 +87,14 @@ SORTING
   margin-bottom: 25px;
   display: flex;
   align-items: center; }
-  #sorting > div {
+  #sorting > input {
+    height: 50px;
     color: #CC5D4C;
+    border: none;
+    border-left: 1px solid #CC5D4C;
+    border-right: 1px solid #CC5D4C;
     cursor: pointer;
-    padding: 10px 0;
+    padding: 30px 0;
     width: 50%;
     text-align: center;
     font-family: "Roboto", sans-serif;
@@ -98,9 +102,10 @@ SORTING
     font-size: 1.25rem;
     transition: all .25s ease;
     -webkit-transition: all .25s ease; }
-  #sorting > div.activeSort {
-    background-color: #96B49C;
-    color: #FFFEC6; }
+    #sorting > input:focus {
+      outline: 0;
+      background-color: #96B49C;
+      color: #FFFEC6; }
 
 /**************************
 CATALOG

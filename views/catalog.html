@@ -1,5 +1,5 @@
 <div ng-controller="CartController" id="catalog">
-  <div class="product" ng-repeat="product in products" data-id="{{product.id}}">
+  <div class="product" ng-repeat="product in products | filter:search:strict | filter:search.price" data-id="{{product.id}}" ng-model="search">
     <div class="productDetails">
       <div class="productImage">
         <a href="#/detail/{{product.id}}"><img ng-src="{{product.img}}"></a>

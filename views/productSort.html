@@ -1,8 +1,4 @@
 <div id="sorting">
-  <div class="sortingTitle" ng-class="{ activeSort:sort.isSet(1) }" ng-click="sort.setSort(1)">
-    Title
-  </div>
-  <div class="sortingPrice" ng-class="{ activeSort:sort.isSet(2) }" ng-click="sort.setSort(2)">
-    Price
-  </div>
+  <input type="text" name="search" ng-model="search.title" placeholder="Title"></input>
+  <input type="text" name="search" ng-model="search.price" placeholder="Price"></input>
 </div>
