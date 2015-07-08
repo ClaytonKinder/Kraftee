@@ -1,6 +1,9 @@
-<ng-include src="'views/header.html'"></ng-include>
+<ng-include src="'products/views/header.html'"></ng-include>
 
 <div class="detail">
+  <div class="mobileDetailTitle">
+    <h2>{{product.title}}</h2>
+  </div>
   <div class="detailImage">
     <img ng-src="{{product.img}}">
     <div ng-show="product.materials.length" class="detailMaterials">

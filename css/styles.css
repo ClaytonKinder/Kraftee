@@ -260,12 +260,20 @@ DETAIL
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
+  -webkit-justify-content: space-around;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-around; }
   .detail > div {
     width: 48%; }
+  .detail .mobileDetailTitle {
+    display: none;
+    text-align: center;
+    color: #CC5D4C;
+    margin-bottom: 25px; }
   .detail .detailImage .detailMaterials {
     background-color: #96B49C;
     padding: 15px 0; }
@@ -437,5 +445,109 @@ CART
         .cartWrapper .checkout .checkoutButton button:hover {
           color: #CC5D4C;
           background-color: white; }
+
+/**************************
+QUERIES
+**************************/
+@media screen and (max-width: 960px) {
+  .detail > div {
+    width: 98%; }
+  .detail .mobileDetailTitle {
+    display: block; }
+  .detail .detailImage {
+    text-align: center; }
+    .detail .detailImage img {
+      width: 65%; }
+    .detail .detailImage .detailMaterials {
+      width: 65%;
+      margin: 0 auto 25px; }
+  .detail .detailInfo {
+    width: 80%; }
+    .detail .detailInfo .detailTitle {
+      display: none; }
+    .detail .detailInfo .detailDescription {
+      padding: 0 1%; }
+    .detail .detailInfo .detailEtsy {
+      text-align: center; }
+    .detail .detailInfo .detailPurchase {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .detail .detailInfo .detailPurchase > div {
+        width: 100%; }
+      .detail .detailInfo .detailPurchase .detailPrice {
+        margin-bottom: 15px; } }
+@media screen and (max-width: 750px) {
+  #catalog .product {
+    width: 50%; }
+
+  .detail > div {
+    width: 98%; }
+  .detail .mobileDetailTitle h2 {
+    font-size: 1.25rem; }
+  .detail .detailImage img {
+    width: 100%; }
+  .detail .detailImage .detailMaterials {
+    width: 100%;
+    margin: 0 auto 25px; }
+  .detail .detailInfo {
+    width: 98%; }
+
+  .cartWrapper .cart .cartProduct {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .cartWrapper .cart .cartProduct .cartProductImage {
+      width: 40%;
+      margin: 0 auto; }
+    .cartWrapper .cart .cartProduct .cartProductTitle {
+      width: 98%;
+      margin: 7.5px auto;
+      font-size: 1rem; }
+    .cartWrapper .cart .cartProduct .cartProductPrice {
+      font-size: 0.75rem;
+      width: 98%;
+      margin: 0 auto; }
+    .cartWrapper .cart .cartProduct .cartProductDelete {
+      width: 98%;
+      margin: 7.5px auto 0; }
+  .cartWrapper .checkout {
+    height: 200px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .cartWrapper .checkout > div {
+      width: 100%; }
+    .cartWrapper .checkout .checkoutPrice,
+    .cartWrapper .checkout .checkoutButton {
+      height: 50%; } }
+@media screen and (max-width: 550px) {
+  #mainHeader {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    #mainHeader > div {
+      width: 100%;
+      text-align: center; }
+    #mainHeader .headerLeft a h1 {
+      font-size: 2.5rem; }
+    #mainHeader .headerRight {
+      text-align: center; }
+
+  #sorting > input {
+    font-size: 1rem; }
+
+  #catalog .product {
+    width: 100%; } }
 
 /*# sourceMappingURL=styles.css.map */

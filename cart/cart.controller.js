@@ -22,12 +22,10 @@
       };
 
       $scope.addToCart = function (product) {
-        console.log('Item added - controller');
         CartService.addToCart(product);
       };
 
       $scope.deleteFromCart = function (productId) {
-        console.log('Item deleted.');
         CartService.deleteFromCart(productId);
       };
 

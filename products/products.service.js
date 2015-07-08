@@ -32,12 +32,11 @@
         var deferred = $q.defer();
         var cache = cacheEngine.get('products');
         if(cache) {
-          console.log('we are in our cache');
           deferred.resolve(cache);
         } else {
           $http.jsonp(urlOpts.buildUrl()).then(function (products) {
             var productsArray = products.data.results;
-            console.log('we are in our http method');
+            console.log(productsArray);
             cacheEngine.put('products', mapData(productsArray));
             deferred.resolve(mapData(productsArray));
           });
@@ -49,7 +48,6 @@
         var deferred = $q.defer();
         var cache = cacheEngine.get('product');
         if(cache) {
-          console.log('single photo cache');
           deferred.resolve(_.where(cache, {id: id})[0]);
         } else {
           $http.jsonp(urlOpts.buildUrl()).then(function (products) {
