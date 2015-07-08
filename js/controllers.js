@@ -2,16 +2,22 @@
   'use strict';
   angular
     .module('kraftee')
-    .controller('MainController', function ($scope, ProductService, $routeParams) {
-      ProductService.getProducts().then(function(products) {
-        $scope.products = products;
-      });
+    .controller('MainController', function ($scope, ProductService, $routeParams, $location) {
+      if ($location.url() === '/') {
+        console.log('Got all products.');
+        ProductService.getProducts().then(function(products) {
+          $scope.products = products;
+        });
+      }
 
-      ProductService.getProduct($routeParams.productId).then(function(product) {
-        $scope.product = product;
-      });
+      if($routeParams.productId) {
+        console.log('Got single product.');
+        ProductService.getProduct($routeParams.productId).then(function(product) {
+          $scope.product = product;
+        });
+      }
     })
-    .controller('CartController', function ($scope, CartService, $location) {
+    .controller('CartController', function ($rootScope, $scope, CartService, $location) {
       CartService.getCart().success(function (cart) {
         $scope.cart = cart;
       });
@@ -25,12 +31,18 @@
       };
 
       $scope.addToCart = function (product) {
+        console.log('Item added.');
         CartService.addToCart(product);
+        $rootScope.$broadcast('cart-scanned');
       };
 
       $scope.deleteFromCart = function (productId) {
+        console.log('Item deleted.');
         CartService.deleteFromCart(productId);
+        $rootScope.$broadcast('cart-scanned');
       };
+
+      // $scope.$on('cart-scanned', CartService.getCartLength())
     });
 
 })();

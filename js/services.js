@@ -56,7 +56,8 @@
     .factory('CartService', function ($http) {
       var url = 'http://tiy-fee-rest.herokuapp.com/collections/krafteekart';
       var addToCart = function (product) {
-      $http.post(url, product).success(function (resp) {
+        console.log('Added to cart.');
+        $http.post(url, product).success(function (resp) {
           console.log(resp);
         }).error(function (err) {
           console.log(err);
@@ -64,6 +65,7 @@
       };
 
       var deleteFromCart = function(productId) {
+        console.log('Deleted from cart.');
         var deleteUrl = url + '/' + productId;
         $http.delete(deleteUrl).success(function (resp) {
             console.log(resp);
@@ -71,12 +73,14 @@
             console.log(err);
           });
       };
-      
+
       var getCart = function () {
+        console.log('Got Cart.');
         return $http.get(url);
       };
 
       var getCartLength = function() {
+        console.log('Got cart length.');
         $http.get(url).success(function(cart) {
           return cart.length;
         })
