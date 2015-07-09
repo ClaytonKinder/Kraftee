@@ -442,9 +442,23 @@ CART
         color: #FFFEC6;
         transition: all .25s ease;
         -webkit-transition: all .25s ease; }
+        .cartWrapper .checkout .checkoutButton button:focus {
+          outline: 0; }
         .cartWrapper .checkout .checkoutButton button:hover {
           color: #CC5D4C;
           background-color: white; }
+
+/**************************
+FOOTER
+**************************/
+footer {
+  height: 200px;
+  background-color: #CC5D4C;
+  font-size: 0.6rem;
+  color: #FFFEC6;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 /**************************
 QUERIES
@@ -495,27 +509,30 @@ QUERIES
   .detail .detailInfo {
     width: 98%; }
 
-  .cartWrapper .cart .cartProduct {
-    height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-    .cartWrapper .cart .cartProduct .cartProductImage {
-      width: 40%;
-      margin: 0 auto; }
-    .cartWrapper .cart .cartProduct .cartProductTitle {
-      width: 98%;
-      margin: 7.5px auto;
-      font-size: 1rem; }
-    .cartWrapper .cart .cartProduct .cartProductPrice {
-      font-size: 0.75rem;
-      width: 98%;
-      margin: 0 auto; }
-    .cartWrapper .cart .cartProduct .cartProductDelete {
-      width: 98%;
-      margin: 7.5px auto 0; }
+  .cartWrapper .cart {
+    width: 98%;
+    margin: 0 auto 25px; }
+    .cartWrapper .cart .cartProduct {
+      height: auto;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .cartWrapper .cart .cartProduct .cartProductImage {
+        width: 40%;
+        margin: 0 auto; }
+      .cartWrapper .cart .cartProduct .cartProductTitle {
+        width: 98%;
+        margin: 7.5px auto;
+        font-size: 1rem; }
+      .cartWrapper .cart .cartProduct .cartProductPrice {
+        font-size: 0.75rem;
+        width: 98%;
+        margin: 0 auto; }
+      .cartWrapper .cart .cartProduct .cartProductDelete {
+        width: 98%;
+        margin: 7.5px auto 0; }
   .cartWrapper .checkout {
     height: 200px;
     -webkit-box-orient: vertical;
@@ -527,7 +544,9 @@ QUERIES
       width: 100%; }
     .cartWrapper .checkout .checkoutPrice,
     .cartWrapper .checkout .checkoutButton {
-      height: 50%; } }
+      height: 50%; }
+    .cartWrapper .checkout .checkoutButton {
+      width: 75%; } }
 @media screen and (max-width: 550px) {
   #mainHeader {
     height: auto;
