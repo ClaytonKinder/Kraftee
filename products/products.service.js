@@ -16,7 +16,7 @@
       var mapData = function(collection) {
        return _.map(collection, function(obj){
          return {
-           img: obj.MainImage.url_fullxfull,
+           img: getImage(obj),
            title: cleanCharacters(obj.title),
            id: obj.listing_id,
            description: cleanCharacters(obj.description),
@@ -25,6 +25,14 @@
            price: obj.price
          }
        });
+      }
+
+      var getImage = function(obj) {
+        if (obj.MainImage) {
+          return obj.MainImage.url_fullxfull;
+        } else {
+          return "http://www.placehold.it/200x200";
+        }
       }
 
       // build image url in object with title, id, date
