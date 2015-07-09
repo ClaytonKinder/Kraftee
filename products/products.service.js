@@ -31,7 +31,7 @@
         if (obj.MainImage) {
           return obj.MainImage.url_fullxfull;
         } else {
-          return "http://www.placehold.it/200x200";
+          return "http://www.placehold.it/200x200?text=Image+Unavailable";
         }
       }
 
