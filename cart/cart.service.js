@@ -6,6 +6,7 @@
       var url = 'http://tiy-fee-rest.herokuapp.com/collections/kraftee-kart';
 
       var addToCart = function(product){
+        $(event.target).children().children().fadeIn(350).fadeOut(350);
         $http.post(url, product).success(function(response){
          $rootScope.$broadcast('item:created');
         }).error(function(error){

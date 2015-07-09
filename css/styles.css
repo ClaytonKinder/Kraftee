@@ -244,6 +244,22 @@ CATALOG
         text-align: center;
         transition: all .25s ease;
         -webkit-transition: all .25s ease; }
+        #catalog .product .productActions .productEtsy .fa-cart-plus,
+        #catalog .product .productActions .productAdd .fa-cart-plus {
+          position: relative; }
+          #catalog .product .productActions .productEtsy .fa-cart-plus .fa-plus-circle,
+          #catalog .product .productActions .productAdd .fa-cart-plus .fa-plus-circle {
+            font-size: 0.5rem;
+            position: absolute;
+            top: 15%; }
+          #catalog .product .productActions .productEtsy .fa-cart-plus .plusCircle1,
+          #catalog .product .productActions .productAdd .fa-cart-plus .plusCircle1 {
+            display: none;
+            left: -110%; }
+          #catalog .product .productActions .productEtsy .fa-cart-plus .plusCircle2,
+          #catalog .product .productActions .productAdd .fa-cart-plus .plusCircle2 {
+            display: none;
+            right: -110%; }
         #catalog .product .productActions .productEtsy:hover,
         #catalog .product .productActions .productAdd:hover {
           background-color: #C7D1AF; }
@@ -341,6 +357,20 @@ DETAIL
       border: 3px solid #CC5D4C;
       transition: all .25s ease;
       -webkit-transition: all .25s ease; }
+      .detail .detailInfo .detailPurchase .detailAdd button .fa-cart-plus {
+        position: relative; }
+        .detail .detailInfo .detailPurchase .detailAdd button .fa-cart-plus .fa-plus-circle {
+          font-size: 0.5rem;
+          position: absolute;
+          top: 25%; }
+        .detail .detailInfo .detailPurchase .detailAdd button .fa-cart-plus .plusCircle1 {
+          display: none;
+          left: -110%; }
+        .detail .detailInfo .detailPurchase .detailAdd button .fa-cart-plus .plusCircle2 {
+          display: none;
+          right: -110%; }
+      .detail .detailInfo .detailPurchase .detailAdd button:focus {
+        outline: 0; }
       .detail .detailInfo .detailPurchase .detailAdd button:hover {
         background-color: white;
         color: #CC5D4C; }

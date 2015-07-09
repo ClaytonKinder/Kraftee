@@ -321,6 +321,26 @@ CATALOG
         transition: all .25s ease;
         -webkit-transition: all .25s ease;
 
+        .fa-cart-plus {
+          position: relative;
+
+          .fa-plus-circle {
+            font-size: 0.5rem;
+            position: absolute;
+            top: 15%;
+          }
+
+          .plusCircle1 {
+            display: none;
+            left: -110%;
+          }
+
+          .plusCircle2 {
+            display: none;
+            right: -110%;
+          }
+        }
+
         &:hover {
           background-color: $c3;
         }
@@ -457,6 +477,30 @@ DETAIL
           border: 3px solid $c1;
           transition: all .25s ease;
           -webkit-transition: all .25s ease;
+
+          .fa-cart-plus {
+            position: relative;
+
+            .fa-plus-circle {
+              font-size: 0.5rem;
+              position: absolute;
+              top: 25%;
+            }
+
+            .plusCircle1 {
+              display: none;
+              left: -110%;
+            }
+
+            .plusCircle2 {
+              display: none;
+              right: -110%;
+            }
+          }
+
+          &:focus {
+            outline: 0;
+          }
 
           &:hover {
             background-color: white;
@@ -723,7 +767,7 @@ QUERIES
     .cart {
       width: 98%;
       margin: 0 auto 25px;
-      
+
       .cartProduct {
         height: auto;
         -webkit-box-orient: vertical;
