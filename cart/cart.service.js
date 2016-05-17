@@ -3,7 +3,7 @@
   angular
     .module('cart')
     .factory('CartService', function ($http, $q, $rootScope) {
-      var url = 'http://localhost:4730';
+      var url = 'https://krafteekart.herokuapp.com';
 
       var addToCart = function(product){
         $(event.target).children().children().fadeIn(350).fadeOut(350);
